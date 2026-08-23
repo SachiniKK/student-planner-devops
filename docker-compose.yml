@@ -1,0 +1,62 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: student-planner-db
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: spa1234
+      MYSQL_DATABASE: student_planner
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pspa1234" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: .
+    container_name: student-planner-api
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - ./app:/app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    container_name: student-planner-ui
+
+    depends_on:
+      - backend
+
+    ports:
+      - "5173:5173"
+
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: spa1234
+      DB_NAME: student_planner
+
+volumes:
+  mysql_data:

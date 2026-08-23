@@ -1,0 +1,625 @@
+/* ==========================================================================
+   Floral Soft Aesthetic Theme - Student Planner
+   ========================================================================== */
+
+/* Outer Page Wrapper & Background Wallpaper */
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    135deg,
+    #eef7f2 0%,
+    #f8eff5 45%,
+    #ebdff5 100%
+  );
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Botanical Background SVGs (Main Stems & Small Background Accents)
+   -------------------------------------------------------------------------- */
+.botanical-svg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.8s ease-in-out;
+}
+
+.bg-flower-left {
+  top: 3%;
+  left: clamp(10px, 3.5vw, 90px);
+  width: 240px;
+  height: auto;
+  opacity: 0.88;
+  filter: drop-shadow(0 8px 24px rgba(219, 39, 119, 0.12));
+  animation: floatBreeze 12s ease-in-out infinite alternate;
+}
+
+.bg-lavender-left {
+  bottom: 0;
+  left: clamp(10px, 2.5vw, 80px);
+  width: 200px;
+  height: auto;
+  opacity: 0.88;
+  filter: drop-shadow(0 8px 20px rgba(147, 51, 234, 0.12));
+  animation: floatBreeze 14s ease-in-out infinite alternate-reverse;
+}
+
+.bg-lavender-right {
+  bottom: 0;
+  right: clamp(10px, 2.5vw, 80px);
+  width: 220px;
+  height: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0 8px 20px rgba(124, 58, 237, 0.12));
+  animation: floatBreeze 10s ease-in-out infinite alternate;
+}
+
+.bg-leaf-top-right {
+  top: 2%;
+  right: clamp(10px, 3.5vw, 90px);
+  width: 140px;
+  height: auto;
+  opacity: 0.8;
+  transform: rotate(25deg);
+}
+
+/* Small Flowers & Leaves in Blank Background Spaces */
+.bg-small-flower-top-left {
+  top: 18%;
+  left: clamp(180px, 18vw, 340px);
+  width: 75px;
+  height: auto;
+  opacity: 0.75;
+  animation: floatBreeze 9s ease-in-out infinite alternate;
+}
+
+.bg-small-flower-mid-right {
+  top: 42%;
+  right: clamp(180px, 16vw, 320px);
+  width: 85px;
+  height: auto;
+  opacity: 0.75;
+  animation: floatBreeze 11s ease-in-out infinite alternate-reverse;
+}
+
+.bg-mini-lavender-top-center {
+  top: 5%;
+  left: clamp(320px, 28vw, 480px);
+  width: 60px;
+  height: auto;
+  opacity: 0.7;
+  transform: rotate(-15deg);
+}
+
+.bg-mini-lavender-bottom-center {
+  bottom: 4%;
+  right: clamp(300px, 26vw, 460px);
+  width: 65px;
+  height: auto;
+  opacity: 0.7;
+  transform: rotate(18deg);
+}
+
+.bg-leaf-bottom-left {
+  bottom: 12%;
+  left: clamp(160px, 15vw, 280px);
+  width: 100px;
+  height: auto;
+  opacity: 0.75;
+  transform: rotate(-35deg);
+}
+
+.flip-x {
+  transform: scaleX(-1);
+}
+
+@keyframes floatBreeze {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(6px) rotate(-1.5deg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Main Glass Card Container (Larger & Roomier)
+   -------------------------------------------------------------------------- */
+.planner-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 580px;
+  min-height: 680px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 40px;
+  padding: 46px 42px 42px;
+  box-shadow: 
+    0 28px 70px rgba(147, 112, 170, 0.18),
+    0 10px 30px rgba(100, 150, 120, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   Header & Progress Tracker (Larger Fonts)
+   -------------------------------------------------------------------------- */
+.planner-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.planner-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: #3b2a4d;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.6px;
+}
+
+.planner-subtitle {
+  font-size: 1.05rem;
+  color: #8a7a99;
+  margin: 0 0 24px 0;
+}
+
+/* Daily Habit Progress Bar */
+.progress-section {
+  background: rgba(248, 243, 252, 0.8);
+  border: 1.5px solid rgba(230, 218, 240, 0.8);
+  border-radius: 20px;
+  padding: 14px 20px;
+  margin-bottom: 8px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+}
+
+.progress-label {
+  font-weight: 700;
+  color: #5c4770;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-size: 0.82rem;
+}
+
+.progress-count {
+  color: #7b6590;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 10px;
+  background: #e8dff0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f472b6, #c084fc, #34d399);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Input Form (Larger Input & Button)
+   -------------------------------------------------------------------------- */
+.task-input-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.task-input {
+  flex: 1;
+  padding: 16px 22px;
+  border-radius: 20px;
+  border: 2px solid #e7dcf2;
+  background: rgba(253, 251, 255, 0.95);
+  font-family: inherit;
+  font-size: 1.08rem;
+  color: #4a3b5c;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-input::placeholder {
+  color: #b5a5c5;
+}
+
+.task-input:focus {
+  border-color: #c084fc;
+  box-shadow: 0 0 0 4px rgba(192, 132, 252, 0.2);
+  background: #ffffff;
+}
+
+.add-task-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 24px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.32);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.add-task-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(168, 85, 247, 0.42);
+  background: linear-gradient(135deg, #b574f9 0%, #9333ea 100%);
+}
+
+.add-task-btn:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* --------------------------------------------------------------------------
+   Filter Tabs (Larger Text)
+   -------------------------------------------------------------------------- */
+.task-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  background: rgba(240, 234, 246, 0.6);
+  padding: 5px;
+  border-radius: 16px;
+}
+
+.filter-tab {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: #857498;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-tab:hover {
+  color: #4a3a5e;
+}
+
+.filter-tab.active {
+  background: #ffffff;
+  color: #6b21a8;
+  box-shadow: 0 3px 10px rgba(100, 80, 120, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   Task List & Pastel Cards (Larger Cards & Fonts)
+   -------------------------------------------------------------------------- */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 440px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.task-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.task-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background: #e2d7ec;
+  border-radius: 10px;
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  border-radius: 24px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 16px rgba(140, 120, 160, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(140, 120, 160, 0.14);
+}
+
+/* Pastel Card Variations */
+.card-mint {
+  background: linear-gradient(135deg, #eef9f3 0%, #e1f5ea 100%);
+  color: #2d5a44;
+}
+
+.card-rose {
+  background: linear-gradient(135deg, #fdf0f4 0%, #fbe4eb 100%);
+  color: #6e3248;
+}
+
+.card-lavender {
+  background: linear-gradient(135deg, #f5eeea 0%, #efe5fa 100%);
+  color: #4c3763;
+}
+
+.card-peach {
+  background: linear-gradient(135deg, #fcf3eb 0%, #f9e8da 100%);
+  color: #634328;
+}
+
+.card-sky {
+  background: linear-gradient(135deg, #f0f7fb 0%, #e2f0f8 100%);
+  color: #2b4b60;
+}
+
+/* Task Title Content */
+.task-content {
+  flex: 1;
+  padding-right: 16px;
+}
+
+.task-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.45;
+  word-break: break-word;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.task-completed {
+  opacity: 0.65;
+}
+
+.task-completed .task-title {
+  text-decoration: line-through;
+  color: #8c8299;
+}
+
+/* --------------------------------------------------------------------------
+   PROMINENT ACTION BUTTONS (Tick and Delete) - EXTRA LARGE & VISIBLE (50px)
+   -------------------------------------------------------------------------- */
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.action-btn {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* --- Tick / Complete Button --- */
+.tick-btn {
+  background: #ffffff;
+  border: 2.5px solid #34d399;
+  color: #059669;
+  box-shadow: 0 4px 14px rgba(52, 211, 153, 0.26);
+}
+
+.tick-btn .tick-icon {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+.tick-btn:hover {
+  transform: scale(1.15);
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+
+.tick-btn:active {
+  transform: scale(0.92);
+}
+
+/* Completed State for Tick Button */
+.tick-btn.is-completed {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+}
+
+.tick-btn.is-completed:hover {
+  background: #047857;
+  border-color: #047857;
+  box-shadow: 0 6px 20px rgba(4, 120, 87, 0.5);
+}
+
+/* --- Delete Button --- */
+.delete-btn {
+  background: #ffffff;
+  border: 2.5px solid #fda4af;
+  color: #e11d48;
+  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.22);
+}
+
+.delete-btn .trash-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.15) rotate(6deg);
+  background: #f43f5e;
+  border-color: #f43f5e;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.5);
+}
+
+.delete-btn:active {
+  transform: scale(0.92);
+}
+
+/* --------------------------------------------------------------------------
+   Empty State
+   -------------------------------------------------------------------------- */
+.empty-state {
+  text-align: center;
+  padding: 44px 24px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 28px;
+  border: 2.5px dashed #ebdff0;
+}
+
+.empty-icon {
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
+
+.empty-title {
+  font-weight: 700;
+  color: #5c4a70;
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.empty-sub {
+  font-size: 0.95rem;
+  color: #9989a8;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout Adjustment
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .page-wrapper {
+    padding: 16px 12px;
+  }
+
+  .planner-card {
+    border-radius: 30px;
+    padding: 32px 22px 28px;
+    max-width: 100%;
+  }
+
+  .planner-title {
+    font-size: 2.2rem;
+  }
+
+  .bg-flower-left {
+    width: 150px;
+    left: -30px;
+    opacity: 0.5;
+  }
+
+  .bg-lavender-left {
+    width: 130px;
+    left: -20px;
+    opacity: 0.5;
+  }
+
+  .bg-lavender-right {
+    width: 130px;
+    right: -20px;
+    opacity: 0.5;
+  }
+
+  .action-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .tick-btn .tick-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .delete-btn .trash-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .planner-card {
+    padding: 26px 16px 22px;
+    border-radius: 24px;
+  }
+
+  .planner-title {
+    font-size: 1.9rem;
+  }
+
+  .task-input-form {
+    gap: 8px;
+  }
+
+  .task-input {
+    padding: 14px 16px;
+    font-size: 0.98rem;
+  }
+
+  .add-task-btn {
+    padding: 0 16px;
+    font-size: 0.95rem;
+  }
+
+  .task-card {
+    padding: 14px 16px;
+  }
+
+  .task-title {
+    font-size: 1.02rem;
+  }
+
+  .action-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
