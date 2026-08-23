@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 
@@ -7,6 +8,7 @@ from models import db, Task
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = (
     f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
