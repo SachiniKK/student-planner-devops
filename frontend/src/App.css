@@ -549,22 +549,25 @@
   }
 
   .planner-title {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
   }
 
   .bg-flower-left {
-    width: 160px;
-    left: -20px;
+    width: 150px;
+    left: -30px;
+    opacity: 0.5;
   }
 
   .bg-lavender-left {
-    width: 140px;
-    left: -10px;
+    width: 130px;
+    left: -20px;
+    opacity: 0.5;
   }
 
   .bg-lavender-right {
-    width: 140px;
-    right: -10px;
+    width: 130px;
+    right: -20px;
+    opacity: 0.5;
   }
 
   .action-btn {
@@ -580,5 +583,43 @@
   .delete-btn .trash-icon {
     width: 20px;
     height: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .planner-card {
+    padding: 26px 16px 22px;
+    border-radius: 24px;
+  }
+
+  .planner-title {
+    font-size: 1.9rem;
+  }
+
+  .task-input-form {
+    gap: 8px;
+  }
+
+  .task-input {
+    padding: 14px 16px;
+    font-size: 0.98rem;
+  }
+
+  .add-task-btn {
+    padding: 0 16px;
+    font-size: 0.95rem;
+  }
+
+  .task-card {
+    padding: 14px 16px;
+  }
+
+  .task-title {
+    font-size: 1.02rem;
+  }
+
+  .action-btn {
+    width: 40px;
+    height: 40px;
   }
 }
