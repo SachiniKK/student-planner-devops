@@ -76,8 +76,19 @@ def delete_task(id):
 
     return jsonify({"message": "Task deleted"})
 
+import time
+
 with app.app_context():
-    db.create_all()
+    retries = 10
+    while retries > 0:
+        try:
+            db.create_all()
+            print("Successfully connected to database and initialized tables.")
+            break
+        except Exception as e:
+            retries -= 1
+            print(f"Database not ready yet ({e}). Retrying in 3 seconds... ({retries} retries left)")
+            time.sleep(3)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
