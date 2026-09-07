@@ -8,8 +8,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all"); // "all", "active", "completed"
 
-  const API_URL = "http://127.0.0.1:5000/tasks";
-
+ const API_URL = `${import.meta.env.VITE_API_URL}/tasks`;
+ 
   const fetchTasks = () => {
     fetch(API_URL)
       .then((res) => {
