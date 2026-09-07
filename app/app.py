@@ -13,6 +13,7 @@ CORS(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = (
     f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
     f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+    "?ssl_verify_cert=true&ssl_verify_identity=true"
 )
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -91,4 +92,4 @@ with app.app_context():
             time.sleep(3)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
